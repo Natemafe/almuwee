@@ -1,4 +1,4 @@
-@font-face {
+/*@font-face {
   font-family: Merriweather;
   src: url(fonts/merriweather.ttf);
 }
@@ -6,7 +6,50 @@
 @font-face {
   font-family: Roboto;
   src: url(fonts/roboto.ttf);
+}*/
+
+/************************************************
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+picture {
+  margin: 0;
+}
+
+body {
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+
+************************************************/
 
 
 /************************************************
@@ -22,7 +65,7 @@ Variables
   --menu-color: #ad612b;
   --white-color: #fff;
   --text-color: #333;
-  --background-color: #fafafa;
+  --background-color: #fff;
   --border:.1rem solid #f4f4f4;
 
   /***************font size***************/
@@ -47,9 +90,9 @@ General Rules
 *******************************************************/
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
   outline: none; 
   border:none;
@@ -225,10 +268,10 @@ Client List
 *******************************************************/
 .client {
   max-width: 90%;
-  background-color: var(--primary-color);
-  color: var(--white-color);
+  background-color: var(--background-color);
+  color: var(--text-color);
   border-radius: 5px;
-  margin: -40px auto 0;
+  margin: -20px auto 0;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -239,13 +282,47 @@ Client List
 
 .clients {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  flex-wrap: wrap;
   align-items: center;
   margin-top: 15px;
 }
 
 .client__item {
   padding-bottom: 10px;
+}
+
+@media only screen and (min-width: 850px){
+ 
+  .client {
+    max-width: 60%;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border: 1px solid #d9dde1;
+    border-radius: 5px;
+    margin: -10px auto 0;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .client__header {
+    text-align: center;
+  }
+
+  .clients {
+    display: flex;
+  }
+
+  .client__list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .client__item {
+    margin-right: 20px;
+    font-size: 18px;
+  }
 }
 
 /*******************************************************
@@ -299,141 +376,7 @@ About
 FAQS
 *******************************************************/
 
-.faqs__header {
-  margin: 3.125rem 0 1.875rem;
-  text-align: center;
-  font-size: var(--h4);
-  color: var(--white-color);
-}
 
-.faqs__container {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.faqs__content {
-  background-color: var(--secondary-color);
-  border: 0.0625rem solid var(--white-color);
-  border-radius: 10px;
-  margin: 20px 0;
-  padding: 30px;
-  position: relative;
-  overflow: hidden;
-  transition: 0.3s ease;
-}
-
-.faqs__content.active {
-  background-color: #fff;
-  color: var(--background-color);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
-}
-
-.faqs__content.active::before,
-.faqs__content.active::after {
-  content: '\f075';
-  font-family: 'Font Awesome 5 Free';
-  color: var(--secondary-color);
-  font-size: 7rem;
-  position: absolute;
-  opacity: 0.2;
-  top: 20px;
-  left: 20px;
-  z-index: 0;
-}
-
-.faqs__content.active::before {
-  color: var(--secondary-color);
-  top: -10px;
-  left: -30px;
-  transform: rotateY(180deg);
-}
-
-.faqs__title {
-  margin: 0 2.1875rem 0 0;
-  color: var(--background-color);
-}
-
-.faqs__text {
-  display: none;
-  margin: 1.875rem 0 0;
-  color: var(--background-color);
-}
-
-.faqs__link {
-  font-weight: 600;
-}
-
-.faqs__content.active .faqs__text {
-  display: block;
-}
-
-.faq-toggle {
-  background-color: transparent;
-  border: 0;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: var(--fs-general);
-  padding: 0;
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  height: 30px;
-  width: 30px;
-}
-
-.faq-toggle:focus {
-  outline: 0;
-}
-
-.faq-toggle .fa-times {
-  display: none;
-}
-
-.faqs__content.active .faq-toggle .fa-times {
-  color: #fff;
-  display: block;
-}
-
-.faqs__content.active .faq-toggle .fa-chevron-down {
-  display: none;
-}
-
-.faqs__content.active .faq-toggle {
-  background-color: var(--background-color);
-}
-
-/*******************************************************
-Contact
-*******************************************************/
-
-.contact__divider {
-  background-size: cover;
-  background-position: center;
-  padding-top: 2rem;
-  padding-bottom:2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.contact {
-  background-color: #fff;
-}
-
-.contact__label {
-  color: #999;
-  text-align: center;
-  font-weight: 800;
-}
-
-.contact__header {
-  color: var(--background-color);
-  text-align: center;
-  padding-top: 2rem;
-}
 
 @media only screen and (max-width: 370px){
   .main-menu__item {
@@ -459,18 +402,23 @@ Contact
 
   .navbar {
     top: 0;
-    justify-content: space-around;
+    justify-content: space-between;
     border-bottom: var(--border);
-    border-top: .1rem solid #303656;
+    /*border-top: .1rem solid #303656;*/
   }
 
   .nav-logo {
     width: auto;
     position: relative;
+    padding-left: 3rem;
   }
 
   .nav-logo__item {
     font-size: 1.8rem;
+  }
+
+  .main-menu {
+    padding-right: 3rem;
   }
 
   .main-menu .main-menu__item {
@@ -486,12 +434,12 @@ Contact
   }
 
   .hero__content{
-    max-width: 35rem;
-    margin-left: 5rem;
+    max-width: 40rem;
+    margin-left: .5rem;
   }
   
   .hero__heading {
-    padding-top: 25%;
+    padding-top: 20%;
     font-size: var(--h3);
   }
   
@@ -503,42 +451,7 @@ Contact
     color:#eee;
   }
 
-  .client {
-    max-width: 65%;
-    background-color: var(--primary-color);
-    color: var(--white-color);
-    border-radius: 5px;
-    margin: -40px auto 0;
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-  }
-
-  .client__header {
-    text-align: center;
-  }
-
-  .clients {
-    display: grid;
-    grid-template-row: 1fr 1fr;
-  }
-
-  .client__list {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .client__item {
-    margin-right: 20px;
-    font-size: 18px;
-  }
-
-  
-
-
-
-
-
-
+ 
 
 
 
